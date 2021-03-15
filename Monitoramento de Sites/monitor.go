@@ -22,13 +22,18 @@ func main() {
 	fmt.Println("2 - Exibir Logs;")
 	fmt.Println("0 - Sair do programa;")
 
-	var comandoLido int
 	fmt.Print("\nOpção >: ")
-	fmt.Scan(&comandoLido)
 
-	comando := comandoLido
+	var comandoLido int
+	_, err := fmt.Scan(&comandoLido)
 
-	switch comando {
+	//Trata o possível erro da entrada de dados
+	if err != nil {
+		// Sai do programa com o status diferente de 0
+		os.Exit(-1)
+	}
+
+	switch comandoLido {
 	case 1:
 		fmt.Print("\n[+] Iniciando Monitoramento...\n\n")
 		iniciarMonitoramento()
@@ -149,7 +154,7 @@ func imprimeLogs() {
 		os.Exit(-1)
 	}
 
-	// Coverte o arquivo de bytes para uma string legível
+	// Converte o arquivo de bytes para uma string legível
 	// Imprime o arquivo log.txt na tela
 	fmt.Println(string(arquivo))
 }
