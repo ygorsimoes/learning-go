@@ -14,13 +14,14 @@ import (
 
 func main() {
 
-	fmt.Println("|===============================|")
-	fmt.Println("|     MONITORAMENTO DE SITES    |")
-	fmt.Println("|===============================|")
+	fmt.Println(`
+|===============================|
+|     MONITORAMENTO DE SITES    |
+|===============================|
 
-	fmt.Println("\n1 - Iniciar Monitoramento;")
-	fmt.Println("2 - Exibir Logs;")
-	fmt.Println("0 - Sair do programa;")
+1 - Iniciar Monitoramento;
+2 - Exibir Logs;
+0 - Sair do programa;`)
 
 	fmt.Print("\nOpção >: ")
 
@@ -46,9 +47,10 @@ func main() {
 	default:
 		fmt.Println("\n[!] Comando não reconhecido.")
 		fmt.Println("[!] Caso o erro persista contate o desenvolvedor.")
+
+		// Encerra o programa com o valor diferente de 0
 		os.Exit(-1)
 	}
-
 }
 
 func iniciarMonitoramento() {
@@ -90,6 +92,7 @@ func leSitesDoArquivo() []string {
 	// Trata o possível erro do arquivo
 	if err != nil {
 		fmt.Println("[!] Ocorreu um erro inesperado!", err)
+		// Encerra o programa com o valor diferente de 0
 		os.Exit(-1)
 	}
 
@@ -114,6 +117,7 @@ func leSitesDoArquivo() []string {
 	// Fecha o arquivo sites.txt
 	arquivo.Close()
 
+	// Retorna a lista de sites
 	return sites
 }
 
@@ -129,6 +133,7 @@ func registraLog(site string, status bool) {
 	// Trata o possível erro do arquivo
 	if err != nil {
 		fmt.Println("[!] Ocorreu um erro inesperado!", err)
+		// Encerra o programa com o valor diferente de 0
 		os.Exit(-1)
 	}
 
@@ -151,6 +156,7 @@ func imprimeLogs() {
 	// Trata o possível erro do arquivo
 	if err != nil {
 		fmt.Println("[!] Ocorreu um erro inesperado!", err)
+		// Encerra o programa com o valor diferente de 0
 		os.Exit(-1)
 	}
 
